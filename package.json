@@ -1,27 +1,47 @@
 {
-    "author": "Juergen Gmeiner",
-    "name": "dicom",
-    "description": "DICOM for node-js",
-    "version": "0.1.0",
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:grmble/node-dicom.git"
-    },
-    "scripts": {
-        "test": "nodeunit test"
-    },
-    "engines": {
-        "node": "0.6.x"
-    },
-    "dependencies": {
-        "log4js": "0.4.x",
-        "printf": "0.0.x",
-        "optimist": "0.3.x"
-    },
-    "devDependencies": {
-        "nodeunit": "0.6.x"
-    },
-    "directories": {
-        "lib": "./lib"
-    }
+  "author": "Juergen Gmeiner",
+  "name": "dicom",
+  "description": "DICOM for node-js",
+  "keywords": [
+    "DICOM"
+  ],
+  "license": "MIT",
+  "version": "0.4.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:grmble/node-dicom.git"
+  },
+  "bin": {
+    "find-tags": "./bin/find-tags.js",
+    "find-uids": "./bin/find-uids.js"
+  },
+  "scripts": {
+    "build": "coffee --compile --output lib/ src/",
+    "prepublish": "coffee --compile --output lib/ src/",
+    "postinstall": "test -d lib || coffee --compile --output lib/ src/",
+    "test": "nodeunit test"
+  },
+  "engines": {
+    "//": "node v0.10.31 is bad, seg faults.  use 0.10.30 or 0.11",
+    "node": ">0.10.0"
+  },
+  "dependencies": {
+    "bunyan": "^1.0.1",
+    "concat-stream": "^1.4.6",
+    "iconv-lite": "^0.4.4",
+    "minimist": "^1.1.0",
+    "printf": "0.2.x"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.8.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-coffee": "^0.12.0",
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "nodeunit": "0.9.x",
+    "xml2js": "0.4.x"
+  },
+  "directories": {
+    "lib": "./lib"
+  }
 }
